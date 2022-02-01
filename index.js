@@ -14,11 +14,11 @@ app.set('view engine', 'ejs');
 app.listen(PORT, () => console.log(`Listening on http://localhost:${ PORT }`));
 
 app.get('/', (request, response ) => {
-    response.render('pages/index', { game : undefined, numberOfTry : game.getNumberOfTry() })
+    response.render('pages/index', { game : undefined, numberOfTry : game.getNumberOfTry(), unknowWord : game.getUnknowWord() })
 })
 
 app.post('/', (request, response) => {
-    console.log(request.body.word);
+    console.log(request.body);
     console.log(game.guess(request.body.word));
-    response.render('pages/index', { game : game.print(), numberOfTry : game.getNumberOfTry() })
+    response.render('pages/index', { game : game.print(), numberOfTry : game.getNumberOfTry(), unknowWord : game.getUnknowWord() })
 })

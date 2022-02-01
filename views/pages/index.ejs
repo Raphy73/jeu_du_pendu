@@ -26,13 +26,15 @@
 
                     <p>Nombre d'essaies restants : <%= numberOfTry %></p>
 
+                    <p><strong>Le mot à trouver : </strong> <%= unknowWord %></p>
+
                     <form action="/" method="post">
                         <div class="mb-3">
                           <label for="word" class="form-label">Proposer une lettre</label>
-                          <input type="text" class="form-control" id="word" name="word" value="">
+                          <input limit="1" type="text" class="form-control" id="word" name="word" value="">
                         </div>
                         <button type="submit" class="btn btn-secondary">Tester</button>
-                      </form>
+                    </form>
                 </div>
             </div>
         </div>
