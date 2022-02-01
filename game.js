@@ -42,6 +42,8 @@ class Game {
 
     reset() {
         this.numberOfTry = 5;
+        this.unknowWord = word.replace(/./g, 'x');
+        this.lettersFound = [];
     }
 
     getNumberOfTry() {

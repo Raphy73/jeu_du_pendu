@@ -31,9 +31,8 @@ describe("Game test", function() {
         assert.equal(game.getUnknowWord(), "xxaxxxxx")
     })
 
-    /*
     it("reset the game when I click on the button", function() {
         game.reset();
         assert.equal(game.getNumberOfTry(), 5)
-    }) */
+    })
 })
