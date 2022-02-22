@@ -1,3 +1,5 @@
+// !!! MESSAGE POUR TOI DAMIEN, DANS allTheWords.js, IL FAUT COMMENTER LE PREMIER TABLEAU ET DECOMMENTER LE DEUXIEME AVANT DE FAIRE LES TESTS AVEC MOCHA
+
 const Game = require('../game.js');
 const assert = require('assert').strict;
 let game = new Game();
