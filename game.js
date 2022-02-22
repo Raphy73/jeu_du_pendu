@@ -6,6 +6,8 @@ String.prototype.replaceAt = function(index, replacement) {
     return this.substring(0, index) + replacement + this.substring(index + 1);
 }
 
+// !!! MESSAGE POUR TOI DAMIEN, DANS allTheWords.js, IL FAUT COMMENTER LE PREMIER TABLEAU ET DECOMMENTER LE DEUXIEME AVANT DE FAIRE LES TESTS AVEC MOCHA
+
 const allTheWordsFile = require("./allTheWords")
 let allTheWords = allTheWordsFile.func()
 
