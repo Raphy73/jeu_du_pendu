@@ -42,7 +42,7 @@ describe("Game test", function() {
         game.guess('z');
         game.guess('z');
         game.guess('z');
-        assert.equal(game.getNumberOfTry(), 5)
+        assert.equal(game.getIsLoose(), true)
     })
 
     it("when the user find the word, it returns true", function() {

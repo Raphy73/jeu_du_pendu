@@ -19,28 +19,39 @@
         <div class="row">
             <div class="col-lg-12">
                 <div>
-
                     <h1 class="text-center">Le jeu du pendu</h1>
                 
-                    <p>Essayez de deviner le mot !</p>
+                    <p class="text-center">Nombre d'essaies restants : <%= numberOfTry %></p>
 
-                    <p>Nombre d'essaies restants : <%= numberOfTry %></p>
-
-                    <p><strong>Le mot à trouver : </strong> <%= unknowWord %></p>
+                    <% if(isTheWordFound == false){ %>
+                        <p class="text-center"><strong>Le mot à trouver : </strong> <%= unknowWord %></p>
+                      <% } else { %>
+                        <p class="text-center"><strong>Le mot est : </strong> <%= unknowWord %></p>
+                      <% } %>
 
                     <% if(isTheWordFound == true){ %>
-                        <h1>Trouvé !</h1>
-                      <% } else{ %>  
-                        <h1>Non trouvé</h1>
-                     <% } %>
-
-                    <form action="/" method="post">
-                        <div class="mb-3">
-                          <input maxlength="1" type="text" class="form-control w-25" placeholder="Proposez une lettre" id="word" name="word" value="">
+                        <div class="alert alert-success w-25 mx-auto" role="alert">
+                            Trouvé !!
                         </div>
-                        <button type="submit" class="btn btn-primary">Tester</button>
-                        <button type="submit" name="reset" value="true" class="btn btn-danger">Reset</button>
-                    </form>
+                      <% } else if (isLoose == true) { %>
+                        <div class="alert alert-danger w-25 mx-auto" role="alert">
+                            Perdu !
+                        </div>
+                      <% } %>
+
+                      <div class="mx-auto w-25">
+                          <form action="/" method="post">
+                              <div class="mb-3">
+                                <% if(isLoose == false && isTheWordFound == false){ %>
+                                <input style="text-transform:lowercase" maxlength="1" type="text" class="form-control" placeholder="Proposez une lettre" id="word" name="word" value="">
+                                <% } %>
+                              </div>
+                                <% if(isLoose == false && isTheWordFound == false){ %>
+                                    <button type="submit" class="btn btn-primary">Tester</button>
+                                <% } %>
+                              <button type="submit" name="reset" value="true" class="btn btn-danger">Reset</button>
+                          </form>
+                      </div>
                 </div>
             </div>
         </div>

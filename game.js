@@ -6,7 +6,9 @@ String.prototype.replaceAt = function(index, replacement) {
     return this.substring(0, index) + replacement + this.substring(index + 1);
 }
 
-const allTheWords = ["Ennui", "Verseau", "Tapisser", "Compter", "Sarbacane", "Poignet", "Saint", "Antiacide", "Chine", "Havre", "Molaire", "Exercice", "Rabat", "Murmure", "Historien", "Sportif", "Sauce", "Continental", "Lasagne", "Clown", "Serpent", "Iliaque", "Pis", "Triple", "Trottoir", "Contribution"];
+// const allTheWords = ["Chambery", "Ennui", "Verseau", "Tapisser", "Compter", "Sarbacane", "Poignet", "Saint", "Antiacide", "Chine", "Havre", "Molaire", "Exercice", "Rabat", "Murmure", "Historien", "Sportif", "Sauce", "Continental", "Lasagne", "Clown", "Serpent", "Iliaque", "Pis", "Triple", "Trottoir", "Contribution"];
+const allTheWords = ["Chambery"];
+
 
 class Game {
     constructor() {
@@ -15,29 +17,27 @@ class Game {
         this.unknowWord = this.word.replace(/./g, '#');
         this.lettersFound = [];
         this.isTheWordFound = false;
+        this.isLoose = false;
     }
 
     guess(oneLetter) {
-        if(this.word.includes(oneLetter)) {
-            if(!this.lettersFound.includes(oneLetter)) {
-                this.lettersFound.push(oneLetter);
+        let oneLetterLowerCase = oneLetter.toLowerCase();
+        if(this.word.includes(oneLetterLowerCase)) {
+            if(!this.lettersFound.includes(oneLetterLowerCase)) {
+                this.lettersFound.push(oneLetterLowerCase);
                 let positionOfCharactersFoundInTheWord = [];
                 for(let i=0; i<this.word.length;i++) {
-                    if (this.word[i] === oneLetter) positionOfCharactersFoundInTheWord.push(i);
+                    if (this.word[i] === oneLetterLowerCase) positionOfCharactersFoundInTheWord.push(i);
                 }
                 for(let i=0; i<positionOfCharactersFoundInTheWord.length;i++) {
-                    this.unknowWord = this.unknowWord.replaceAt(positionOfCharactersFoundInTheWord[i], oneLetter);
+                    this.unknowWord = this.unknowWord.replaceAt(positionOfCharactersFoundInTheWord[i], oneLetterLowerCase);
                 }
                 this.checkIfTheWordIsFound();
             }
         } else {
             this.numberOfTry--;
-            if(this.numberOfTry <= 0) {
-                this.word = allTheWords[Math.floor(Math.random()*allTheWords.length)].toLowerCase();
-                this.numberOfTry = 5;
-                this.unknowWord = this.word.replace(/./g, '#');
-                this.lettersFound = [];
-                this.isTheWordFound = false;
+            if(this.numberOfTry == 0) {
+                this.isLoose = true;
             }
         }
     }
@@ -61,6 +61,7 @@ class Game {
         this.unknowWord = this.word.replace(/./g, '#');
         this.lettersFound = [];
         this.isTheWordFound = false;
+        this.isLoose = false;
     }
 
     getNumberOfTry() {
@@ -73,6 +74,10 @@ class Game {
 
     getUnknowWord() {
         return this.unknowWord;
+    }
+
+    getIsLoose() {
+        return this.isLoose;
     }
 
     getIsTheWordFound() {
