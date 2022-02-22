@@ -6,9 +6,8 @@ String.prototype.replaceAt = function(index, replacement) {
     return this.substring(0, index) + replacement + this.substring(index + 1);
 }
 
-// const allTheWords = ["Chambery", "Ennui", "Verseau", "Tapisser", "Compter", "Sarbacane", "Poignet", "Saint", "Antiacide", "Chine", "Havre", "Molaire", "Exercice", "Rabat", "Murmure", "Historien", "Sportif", "Sauce", "Continental", "Lasagne", "Clown", "Serpent", "Iliaque", "Pis", "Triple", "Trottoir", "Contribution"];
-const allTheWords = ["Chambery"];
-
+const allTheWordsFile = require("./allTheWords")
+let allTheWords = allTheWordsFile.func()
 
 class Game {
     constructor() {

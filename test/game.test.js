@@ -8,7 +8,7 @@ describe("Game test", function() {
         assert.equal(game.getNumberOfTry(), 5)
     })
 
-    it("should show only 'x' letter", function() {
+    it("should show only '#' character", function() {
         assert.equal(game.print(), "########")
     })
 
@@ -31,18 +31,23 @@ describe("Game test", function() {
         assert.equal(game.getUnknowWord(), "##a#####")
     })
 
-    it("reset the game when I click on the button", function() {
+    it("when the user click on reset, the number of try has to be at 5", function() {
         game.reset();
         assert.equal(game.getNumberOfTry(), 5)
     })
 
-    it("reset the game when the user used all the tries", function() {
+    it("when the user uses all his tries, it returns false", function() {
         game.guess('z');
         game.guess('z');
         game.guess('z');
         game.guess('z');
         game.guess('z');
         assert.equal(game.getIsLoose(), true)
+    })
+
+    it("when the user click on reset, it has to reset the lost variable", function() {
+        game.reset();
+        assert.equal(game.getIsLoose(), false);
     })
 
     it("when the user find the word, it returns true", function() {
@@ -55,5 +60,10 @@ describe("Game test", function() {
         game.guess("r");
         game.guess("y");
         assert.equal(game.getIsTheWordFound(), true)
+    })
+
+    it("when the user click on reset, it has to reset the win variable", function() {
+        game.reset();
+        assert.equal(game.getIsTheWordFound(), false);
     })
 })
