@@ -20,7 +20,7 @@
             <div class="col-lg-12">
                 <div>
 
-                    <h1>Le jeu du pendu</h1>
+                    <h1 class="text-center">Le jeu du pendu</h1>
                 
                     <p>Essayez de deviner le mot !</p>
 
@@ -28,12 +28,17 @@
 
                     <p><strong>Le mot à trouver : </strong> <%= unknowWord %></p>
 
+                    <% if(isTheWordFound == true){ %>
+                        <h1>Trouvé !</h1>
+                      <% } else{ %>  
+                        <h1>Non trouvé</h1>
+                     <% } %>
+
                     <form action="/" method="post">
                         <div class="mb-3">
-                          <label for="word" class="form-label">Proposer une lettre</label>
-                          <input limit="1" type="text" class="form-control w-25" id="word" name="word" value="">
+                          <input maxlength="1" type="text" class="form-control w-25" placeholder="Proposez une lettre" id="word" name="word" value="">
                         </div>
-                        <button type="submit" class="btn btn-secondary">Tester</button>
+                        <button type="submit" class="btn btn-primary">Tester</button>
                         <button type="submit" name="reset" value="true" class="btn btn-danger">Reset</button>
                     </form>
                 </div>
